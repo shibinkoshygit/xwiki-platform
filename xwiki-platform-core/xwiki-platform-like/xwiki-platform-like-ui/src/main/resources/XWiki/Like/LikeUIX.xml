@@ -552,20 +552,27 @@ require(['jquery', 'xwiki-meta', 'xwiki-l10n!xwiki-like-messages'], function ($,
     #set ($discard = $xwiki.jsx.use('XWiki.Like.LikeUIX'))
     &lt;div class="like-container"&gt;
       &lt;input id="is-liked" type="hidden" value="$services.like.isLiked($doc)" /&gt;
-      #if ($isGuest || $services.like.isLiked($doc))
+
+     
+      #set ($isLiked = $services.like.isLiked($doc))
+      #if ($isLiked)
         #set ($btnClass = "btn-primary")
         #set ($heartIconName = 'heart')
         #set ($titleMessageTranslationKey = "like.toggle.hint.unlike")
-      #elseif (!$isGuest)
+      #else
         #set ($btnClass = "btn-default")
         #set ($heartIconName = 'heart_empty')
         #set ($titleMessageTranslationKey = "like.toggle.hint.like")
       #end
+
       #set ($disabledButton = false)
       #if (!$services.like.isAuthorized($doc))
         #set ($disabledButton = true)
         #set ($titleMessageTranslationKey = "like.toggle.hint.like.noright")
       #end
+     
+ 
+      
       #set($likersText = $services.localization.render("like.likers.link.many", [$likeCount]))
       #if ($likeCount == 0)
         #set($likersText = $services.localization.render("like.likers.link.zero", [$likeCount]))
