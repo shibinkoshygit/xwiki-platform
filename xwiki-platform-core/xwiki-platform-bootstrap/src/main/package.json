@@ -19,6 +19,9 @@
     "test": "grunt test"
   },
   "dependencies": {},
+  "overrides": {
+    "@babel/helpers": "^7.26.10"
+  },
   "devDependencies": {
     "autoprefixer": "^9.4.7",
     "btoa": "^1.2.1",
